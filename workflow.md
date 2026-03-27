@@ -44,19 +44,18 @@ The cloud_tracker code is on the common/software partition at `/global/common/so
 
 This is done at the current directory (`/global/cfs/cdirs/m1657/xiao169/ehe_tracking`). Here is a list of analyses I have done for each case so far,
 
-First, there are some common scripts/notebooks used for all runs:
+### BOMEX
+
+Scripts present in each `run`:
 
 - `filter_tracked_clouds.ipynb`: filter out smaller clouds for subsequent analyses. Use `.json` files to store filtered cloud info
 
 - `calc_density.ipynb`: calculate density fields for every snapshot
 
-### BOMEX
-
-Scripts present in each `run`:
-
 - `calc_mean_var.ipynb`: calculates the 2-hour mean and variance profiles. Results stored in `pkl`
 
 - `calc_tracked_clouds_stats_alt_2.py`/`calc_tracked_clouds_stats_alt.py`: calculate "core", "condensed", "plume" statistcs for `qc`/`af`, `wq`, `mf`. `calc_tracked_clouds_stats_alt*.slurm` is the submission script for both. `combine_pkl_t.ipynb` is used to glue the per-time output together and put into `pkl`.
+
 
 - `output_cloud_masks.py`: output the 3-D  masks of various tracked cloud populaions to `tracked_volumes`.
 
@@ -92,16 +91,21 @@ I am analyzing three pairs of experiments for this case:
 
 - Very-large-domain low-res pair: `goamazon_2pulse.largedom_1024.r20260116` and `goamazon_2pulse.largedom_1024.ehe1.r20260115`
 
-The analysis scripts/notebooks in each run directory are basically the same as those in the BOMEX runs except for `calculate_plume_mean_properties_noquad.py`, which is used instead of `calculate_plume_mean_properties.py` to save time.
+The analysis scripts/notebooks in each run directory are basically the same as those in the BOMEX runs except that,
+
+- `calculate_plume_mean_properties_noquad.py` is used instead of `calculate_plume_mean_properties.py` for efficiency.
+
+- `calc_tracked_clouds_stats_alt_sparse.py` is the updated version (thanks to Claude) that runs much faster of `calc_tracked_clouds_stats_alt.py`. `combine_pkl_t_sparse.py` now produces the cloud stats files (.h5) and stores them in `hdf5/` instead of `pkl`. [NOT yet used for small_dom runs]
 
 Scripts for comparing pairs of simulations:
 
 These are similar to what we have for BOMEX.
 
-- `ehe1_vs_ctl.csd.*.ipynb`
-- `compare_bin_lifetime.*.ipynb`
+- `calc_csd.*.ipynb`/`calc_csd_sparse.*.ipynb`: 
+- `ehe1_vs_ctl.csd.*.ipynb`:  
+- `compare_bin_lifetime.*.ipynb`: 
 - `compare_bin_profiles.*.ipynb`
-- `total_qc_diff.ehe1.*.ipynb`
+- `total_qc_diff.ehe1.*.ipynb`/`total_wq_diff.ehe1.*.ipynb`
 
 There are also earlier versions of `compare_bin_profiles.*`:
 

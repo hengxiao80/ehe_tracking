@@ -9,7 +9,11 @@ data
 density
 hdf5
 tracking
+tracked_volumes
+scratch
 
+*.err
+*.out
 *.log
 *.pkl
 pkl/
