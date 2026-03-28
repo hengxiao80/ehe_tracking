@@ -50,8 +50,8 @@ import numpy as np
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-DVS_HEADER    = "/dvs_ro/cfs/cdirs/m1657/xiao169/ehe_tracking/goamazon2p/goamazon_2pulse.largedom_1024.ehe1.r20260115"
-SCRATCH_HEADER = "/pscratch/sd/x/xiao169/ehe_tracking/goamazon2p/goamazon_2pulse.largedom_1024.ehe1.r20260115"
+DVS_HEADER    = "/dvs_ro/cfs/cdirs/m1657/xiao169/ehe_tracking/goamazon2p/goamazon_2pulse.largedom_1024.r20260116"
+SCRATCH_HEADER = "/pscratch/sd/x/xiao169/ehe_tracking/goamazon2p/goamazon_2pulse.largedom_1024.r20260116"
 
 # Output directory (relative to cwd, matching existing notebook convention)
 OUT_DIR = "hdf5"
